@@ -19,7 +19,7 @@
 
         .progress-container {
             width: 80%;
-            margin: 20px 0;
+            margin: 10px 0;
         }
 
         .progress-bar {
@@ -40,7 +40,7 @@
         }
 
         .eloise-fill {
-            background-color: purple;
+            background-color: #b380ff; /* Lighter purple for Eloise */
         }
 
         h1 {
@@ -49,30 +49,35 @@
 
         h2 {
             margin-top: 0;
+            margin-bottom: 10px;
         }
 
-        .name-container {
-            display: flex;
-            justify-content: space-between;
-            width: 80%;
+        .name {
+            font-size: 24px;
+            margin-bottom: 5px;
+        }
+
+        .matilda-name {
+            color: pink;
+        }
+
+        .eloise-name {
+            color: #b380ff;
         }
     </style>
 </head>
 <body>
     <h1>Matilda and Eloise's Competition</h1>
-    
-    <div class="name-container">
-        <h2>Matilda</h2>
-        <h2>Eloise</h2>
-    </div>
 
     <div class="progress-container">
+        <div class="name matilda-name">Matilda</div>
         <div class="progress-bar">
             <div class="progress-fill matilda-fill" id="matilda-progress" style="width: 0%;"></div>
         </div>
     </div>
 
     <div class="progress-container">
+        <div class="name eloise-name">Eloise</div>
         <div class="progress-bar">
             <div class="progress-fill eloise-fill" id="eloise-progress" style="width: 0%;"></div>
         </div>
@@ -93,7 +98,7 @@
                 case 'F11': // F11 to increase Eloise's progress
                     if (eloiseProgress < 100) eloiseProgress += 5;
                     break;
-                case 'F9': // F9 to decrease Eloise's progress
+                case 'F8': // F8 to decrease Eloise's progress
                     if (eloiseProgress > 0) eloiseProgress -= 5;
                     break;
             }
