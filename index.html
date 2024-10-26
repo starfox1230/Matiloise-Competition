@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matilda and Eloise's Competition</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #1c1c1c;
+            color: white;
+            font-family: Arial, sans-serif;
+        }
+
+        .progress-container {
+            width: 80%;
+            margin: 20px 0;
+        }
+
+        .progress-bar {
+            width: 100%;
+            background-color: #e0e0e0;
+            border-radius: 25px;
+            overflow: hidden;
+            height: 50px;
+        }
+
+        .progress-fill {
+            height: 100%;
+            transition: width 0.3s ease;
+        }
+
+        .matilda-fill {
+            background-color: pink;
+        }
+
+        .eloise-fill {
+            background-color: purple;
+        }
+
+        h1 {
+            margin-bottom: 0;
+        }
+
+        h2 {
+            margin-top: 0;
+        }
+
+        .name-container {
+            display: flex;
+            justify-content: space-between;
+            width: 80%;
+        }
+    </style>
+</head>
+<body>
+    <h1>Matilda and Eloise's Competition</h1>
+    
+    <div class="name-container">
+        <h2>Matilda</h2>
+        <h2>Eloise</h2>
+    </div>
+
+    <div class="progress-container">
+        <div class="progress-bar">
+            <div class="progress-fill matilda-fill" id="matilda-progress" style="width: 0%;"></div>
+        </div>
+    </div>
+
+    <div class="progress-container">
+        <div class="progress-bar">
+            <div class="progress-fill eloise-fill" id="eloise-progress" style="width: 0%;"></div>
+        </div>
+    </div>
+
+    <script>
+        let matildaProgress = 0;
+        let eloiseProgress = 0;
+
+        document.addEventListener('keydown', (event) => {
+            switch (event.key) {
+                case 'F1': // F1 to increase Matilda's progress
+                    if (matildaProgress < 100) matildaProgress += 5;
+                    break;
+                case ' ': // Spacebar to decrease Matilda's progress
+                    if (matildaProgress > 0) matildaProgress -= 5;
+                    break;
+                case 'F11': // F11 to increase Eloise's progress
+                    if (eloiseProgress < 100) eloiseProgress += 5;
+                    break;
+                case 'F9': // F9 to decrease Eloise's progress
+                    if (eloiseProgress > 0) eloiseProgress -= 5;
+                    break;
+            }
+            updateProgressBars();
+        });
+
+        function updateProgressBars() {
+            document.getElementById('matilda-progress').style.width = matildaProgress + '%';
+            document.getElementById('eloise-progress').style.width = eloiseProgress + '%';
+        }
+    </script>
+</body>
+</html>
