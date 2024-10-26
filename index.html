@@ -88,6 +88,11 @@
         let eloiseProgress = 0;
 
         document.addEventListener('keydown', (event) => {
+            // Prevent default action when spacebar is pressed
+            if (event.key === ' ') {
+                event.preventDefault();
+            }
+
             switch (event.key) {
                 case 'F1': // F1 to increase Matilda's progress
                     if (matildaProgress < 100) matildaProgress += 5;
