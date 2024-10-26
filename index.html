@@ -28,6 +28,7 @@
             border-radius: 25px;
             overflow: hidden;
             height: 50px;
+            position: relative;
         }
 
         .progress-fill {
@@ -70,14 +71,14 @@
 
     <div class="progress-container">
         <div class="name matilda-name"><b>Matilda</b></div>
-        <div class="progress-bar">
+        <div class="progress-bar" id="matilda-bar">
             <div class="progress-fill matilda-fill" id="matilda-progress" style="width: 0%;"></div>
         </div>
     </div>
 
     <div class="progress-container">
         <div class="name eloise-name"><b>Eloise</b></div>
-        <div class="progress-bar">
+        <div class="progress-bar" id="eloise-bar">
             <div class="progress-fill eloise-fill" id="eloise-progress" style="width: 0%;"></div>
         </div>
     </div>
@@ -105,6 +106,34 @@
                 case 'F8': // F8 to decrease Eloise's progress
                     if (eloiseProgress > 0) eloiseProgress -= 5;
                     break;
+            }
+            updateProgressBars();
+        });
+
+        // Add click event for Matilda's progress bar
+        document.getElementById('matilda-bar').addEventListener('click', function(event) {
+            let barWidth = this.clientWidth;
+            let clickPosition = event.offsetX;
+            let clickedPercent = (clickPosition / barWidth) * 100;
+
+            if (clickedPercent < 50) {
+                if (matildaProgress > 0) matildaProgress -= 5;
+            } else {
+                if (matildaProgress < 100) matildaProgress += 5;
+            }
+            updateProgressBars();
+        });
+
+        // Add click event for Eloise's progress bar
+        document.getElementById('eloise-bar').addEventListener('click', function(event) {
+            let barWidth = this.clientWidth;
+            let clickPosition = event.offsetX;
+            let clickedPercent = (clickPosition / barWidth) * 100;
+
+            if (clickedPercent < 50) {
+                if (eloiseProgress > 0) eloiseProgress -= 5;
+            } else {
+                if (eloiseProgress < 100) eloiseProgress += 5;
             }
             updateProgressBars();
         });
